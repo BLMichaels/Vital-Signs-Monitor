@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="SimBox Medical Vital Signs Monitor - Advanced Medical Simulation Training">
+    <meta name="keywords" content="medical simulation, vital signs, ECG, monitor, training">
+    <meta name="author" content="SimBox Medical">
+    <title>SimBox Vital Signs Monitor - Medical Simulation</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="monitor-container">
+        <!-- Monitor Frame -->
+        <div class="monitor-frame">
+            <!-- Header -->
+            <div class="monitor-header">
+                <div class="brand-logo">SimBox</div>
+                <div class="monitor-title">Patient Monitor</div>
+                <div class="patient-info">
+                    <div class="patient-name" id="patient-name">Patient: John Doe</div>
+                    <div class="patient-id" id="patient-id">ID: 12345</div>
+                    <div class="patient-age" id="patient-age">Age: 45</div>
+                </div>
+                <div class="mode-indicator">
+                    <span id="mode-text">Normal</span>
+                    <button id="big-numbers-btn" class="mode-btn">Big Numbers</button>
+                </div>
+            </div>
+
+            <!-- Main Display Area -->
+            <div class="display-area">
+                <!-- Waveform Display with Overlaid Vital Signs -->
+                <div class="waveform-container">
+                    <div class="waveform-header">
+                        <div class="waveform-controls">
+                            <span class="waveform-label">ECG</span>
+                            <select id="ecg-lead-select" class="lead-select">
+                                <option value="II">Lead II</option>
+                                <option value="I">Lead I</option>
+                                <option value="III">Lead III</option>
+                                <option value="aVR">aVR</option>
+                                <option value="aVL">aVL</option>
+                                <option value="aVF">aVF</option>
+                                <option value="V1">V1</option>
+                                <option value="V2">V2</option>
+                                <option value="V3">V3</option>
+                                <option value="V4">V4</option>
+                                <option value="V5">V5</option>
+                                <option value="V6">V6</option>
+                            </select>
+                        </div>
+                        <div class="waveform-settings">
+                            <span class="waveform-scale">10mm/mV</span>
+                            <button id="freeze-btn" class="control-btn">Freeze</button>
+                            <select id="speed-select" class="speed-select">
+                                <option value="25">25mm/s</option>
+                                <option value="50" selected>50mm/s</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="waveform-wrapper">
+                        <canvas id="ecg-canvas" width="800" height="200"></canvas>
+                        <!-- Heart Rate Display on ECG -->
+                        <div class="vital-overlay" id="hr-overlay">
+                            <div class="vital-label">HR</div>
+                            <div class="vital-value" id="heart-rate-value">72</div>
+                            <div class="vital-unit">bpm</div>
+                        </div>
+                        <!-- Blood Pressure Display on ECG -->
+                        <div class="vital-overlay bp-overlay" id="bp-overlay">
+                            <div class="vital-label">NIBP</div>
+                            <div class="vital-value" id="bp-value">120/80</div>
+                            <div class="vital-unit">mmHg</div>
+                        </div>
+                        <!-- Temperature Display on ECG -->
+                        <div class="vital-overlay temp-overlay" id="temp-overlay">
+                            <div class="vital-label">TEMP</div>
+                            <div class="vital-value" id="temp-value">36.5</div>
+                            <div class="vital-unit">°C</div>
+                        </div>
+                        <!-- ST Segment Analysis Display -->
+                        <div class="vital-overlay st-overlay" id="st-overlay">
+                            <div class="vital-label">ST</div>
+                            <div class="vital-value" id="st-value">+0.0</div>
+                            <div class="vital-unit">mV</div>
+                        </div>
+                        <!-- Arrhythmia Detection -->
+                        <div class="vital-overlay arrhythmia-overlay" id="arrhythmia-overlay">
+                            <div class="vital-label">RHYTHM</div>
+                            <div class="vital-value" id="rhythm-value">NSR</div>
+                        </div>
+                    </div>
+                    
+                    <div class="waveform-header">
+                        <span class="waveform-label">Pleth</span>
+                        <span class="waveform-scale">100%</span>
+                    </div>
+                    <div class="waveform-wrapper">
+                        <canvas id="pleth-canvas" width="800" height="150"></canvas>
+                        <!-- SpO2 Display on Pleth -->
+                        <div class="vital-overlay spo2-overlay" id="spo2-overlay">
+                            <div class="vital-label">SpO₂</div>
+                            <div class="vital-value" id="spo2-value">98</div>
+                            <div class="vital-unit">%</div>
+                        </div>
+                        <!-- Respiratory Rate Display on Pleth -->
+                        <div class="vital-overlay rr-overlay" id="rr-overlay">
+                            <div class="vital-label">RR</div>
+                            <div class="vital-value" id="resp-rate-value">16</div>
+                            <div class="vital-unit">/min</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Control Panel -->
+            <div class="control-panel">
+                <div class="control-section">
+                    <h3>Vital Signs Controls</h3>
+                    <div class="control-group">
+                        <label for="hr-control">Heart Rate (bpm):</label>
+                        <input type="range" id="hr-control" min="30" max="200" value="72">
+                        <span id="hr-display">72</span>
+                    </div>
+                    <div class="control-group">
+                        <label for="spo2-control">SpO₂ (%):</label>
+                        <input type="range" id="spo2-control" min="70" max="100" value="98">
+                        <span id="spo2-display">98</span>
+                    </div>
+                    <div class="control-group">
+                        <label for="rr-control">Respiratory Rate (/min):</label>
+                        <input type="range" id="rr-control" min="5" max="40" value="16">
+                        <span id="rr-display">16</span>
+                    </div>
+                    <div class="control-group">
+                        <label for="systolic-control">Systolic BP (mmHg):</label>
+                        <input type="range" id="systolic-control" min="60" max="200" value="120">
+                        <span id="systolic-display">120</span>
+                    </div>
+                    <div class="control-group">
+                        <label for="diastolic-control">Diastolic BP (mmHg):</label>
+                        <input type="range" id="diastolic-control" min="40" max="120" value="80">
+                        <span id="diastolic-display">80</span>
+                    </div>
+                    <div class="control-group">
+                        <label for="temp-control">Temperature (°C):</label>
+                        <input type="range" id="temp-control" min="32" max="42" value="36.5" step="0.1">
+                        <span id="temp-display">36.5</span>
+                    </div>
+                </div>
+
+                <div class="control-section">
+                    <h3>Alarm Settings</h3>
+                    <div class="alarm-controls">
+                        <label>
+                            <input type="checkbox" id="alarm-enabled" checked>
+                            Enable Alarms
+                        </label>
+                        <div class="alarm-priority">
+                            <label for="alarm-priority">Priority Level:</label>
+                            <select id="alarm-priority">
+                                <option value="advisory">Advisory</option>
+                                <option value="warning">Warning</option>
+                                <option value="critical" selected>Critical</option>
+                            </select>
+                        </div>
+                        <div class="alarm-buttons">
+                            <button id="test-alarm-btn">Test Alarm</button>
+                            <button id="silence-alarm-btn">Silence</button>
+                            <button id="reset-alarms-btn">Reset</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="control-section">
+                    <h3>ECG Analysis</h3>
+                    <div class="ecg-analysis-controls">
+                        <div class="control-group">
+                            <label for="st-elevation">ST Elevation (mV):</label>
+                            <input type="range" id="st-elevation" min="-2" max="2" value="0" step="0.1">
+                            <span id="st-elevation-display">0.0</span>
+                        </div>
+                        <div class="control-group">
+                            <label for="rhythm-select">Rhythm Type:</label>
+                            <select id="rhythm-select">
+                                <option value="NSR">Normal Sinus Rhythm</option>
+                                <option value="AF">Atrial Fibrillation</option>
+                                <option value="AFL">Atrial Flutter</option>
+                                <option value="VT">Ventricular Tachycardia</option>
+                                <option value="VF">Ventricular Fibrillation</option>
+                                <option value="PVC">Premature Ventricular Contractions</option>
+                                <option value="PAC">Premature Atrial Contractions</option>
+                                <option value="Brady">Bradycardia</option>
+                                <option value="Tachy">Tachycardia</option>
+                            </select>
+                        </div>
+                        <div class="control-group">
+                            <label for="qt-interval">QT Interval (ms):</label>
+                            <input type="range" id="qt-interval" min="300" max="600" value="400">
+                            <span id="qt-interval-display">400</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="control-section">
+                    <h3>NIBP Measurement</h3>
+                    <div class="nibp-controls">
+                        <button id="start-nibp-btn" class="control-btn">Start NIBP</button>
+                        <button id="stop-nibp-btn" class="control-btn">Stop NIBP</button>
+                        <div class="control-group">
+                            <label for="nibp-interval">Measurement Interval (min):</label>
+                            <select id="nibp-interval">
+                                <option value="1">1 minute</option>
+                                <option value="5" selected>5 minutes</option>
+                                <option value="15">15 minutes</option>
+                                <option value="30">30 minutes</option>
+                                <option value="60">60 minutes</option>
+                            </select>
+                        </div>
+                        <div class="nibp-status" id="nibp-status">Ready</div>
+                    </div>
+                </div>
+
+                <div class="control-section">
+                    <h3>Artifact Simulation</h3>
+                    <div class="artifact-controls">
+                        <label>
+                            <input type="checkbox" id="motion-artifact">
+                            Motion Artifact
+                        </label>
+                        <label>
+                            <input type="checkbox" id="poor-contact">
+                            Poor Contact
+                        </label>
+                        <label>
+                            <input type="checkbox" id="muscle-tremor">
+                            Muscle Tremor
+                        </label>
+                        <label>
+                            <input type="checkbox" id="baseline-drift">
+                            Baseline Drift
+                        </label>
+                    </div>
+                </div>
+
+                <div class="control-section">
+                    <h3>Audio Settings</h3>
+                    <div class="audio-controls">
+                        <label>
+                            <input type="checkbox" id="audio-enabled" checked>
+                            Enable Audio
+                        </label>
+                        <div class="control-group">
+                            <label for="volume-control">Volume:</label>
+                            <input type="range" id="volume-control" min="0" max="100" value="50">
+                            <span id="volume-display">50</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Alarm Status -->
+            <div class="alarm-status" id="alarm-status">
+                <div class="alarm-indicator" id="alarm-indicator"></div>
+                <div class="alarm-message" id="alarm-message"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,1005 @@
+/* Phillips Monitor Styling */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #1a1a1a; /* Fallback for older browsers */
+    background: -webkit-linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    background: -moz-linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    background: -o-linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    background: -ms-linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    color: #ffffff;
+    overflow: hidden;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+}
+
+.monitor-container {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-justify-content: center;
+    -moz-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    height: 100vh;
+    padding: 20px;
+}
+
+.monitor-frame {
+    background: #2c2c2c; /* Fallback */
+    background: -webkit-linear-gradient(145deg, #2c2c2c, #1a1a1a);
+    background: -moz-linear-gradient(145deg, #2c2c2c, #1a1a1a);
+    background: -o-linear-gradient(145deg, #2c2c2c, #1a1a1a);
+    background: -ms-linear-gradient(145deg, #2c2c2c, #1a1a1a);
+    background: linear-gradient(145deg, #2c2c2c, #1a1a1a);
+    border-radius: 20px;
+    -webkit-border-radius: 20px;
+    -moz-border-radius: 20px;
+    box-shadow: 
+        0 0 50px rgba(0, 0, 0, 0.8),
+        inset 0 0 20px rgba(255, 255, 255, 0.05);
+    -webkit-box-shadow: 
+        0 0 50px rgba(0, 0, 0, 0.8),
+        inset 0 0 20px rgba(255, 255, 255, 0.05);
+    -moz-box-shadow: 
+        0 0 50px rgba(0, 0, 0, 0.8),
+        inset 0 0 20px rgba(255, 255, 255, 0.05);
+    padding: 30px;
+    width: 100%;
+    max-width: 1400px;
+    height: 90vh;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: column;
+    -moz-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    border: 3px solid #333;
+}
+
+.monitor-header {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-justify-content: space-between;
+    -moz-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #444;
+    -webkit-flex-wrap: wrap;
+    -moz-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.patient-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    font-size: 14px;
+    color: #ccc;
+}
+
+.patient-name {
+    font-weight: bold;
+    color: #00ff88;
+}
+
+.patient-id, .patient-age {
+    font-size: 12px;
+    color: #888;
+}
+
+.brand-logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #00a8ff;
+    text-shadow: 0 0 10px rgba(0, 168, 255, 0.5);
+}
+
+.monitor-title {
+    font-size: 18px;
+    color: #ccc;
+    font-weight: 300;
+}
+
+.mode-indicator {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+#mode-text {
+    font-size: 16px;
+    color: #00ff88;
+    font-weight: bold;
+}
+
+.mode-btn {
+    background: linear-gradient(145deg, #00a8ff, #007acc);
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 168, 255, 0.3);
+}
+
+.mode-btn:hover {
+    background: linear-gradient(145deg, #007acc, #005999);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 168, 255, 0.4);
+}
+
+.mode-btn.active {
+    background: linear-gradient(145deg, #ff6b35, #e55a2b);
+    box-shadow: 0 4px 8px rgba(255, 107, 53, 0.3);
+}
+
+.display-area {
+    flex: 1;
+    margin-bottom: 20px;
+}
+
+.waveform-container {
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+    padding: 20px;
+    border: 1px solid #444;
+}
+
+.waveform-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.waveform-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    color: #ccc;
+    font-size: 14px;
+}
+
+.waveform-controls {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.waveform-settings {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.lead-select, .speed-select {
+    background: rgba(0, 0, 0, 0.5);
+    border: 1px solid #555;
+    color: #fff;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+}
+
+.control-btn {
+    background: linear-gradient(145deg, #444, #333);
+    border: 1px solid #555;
+    color: #fff;
+    padding: 4px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: all 0.3s ease;
+}
+
+.control-btn:hover {
+    background: linear-gradient(145deg, #555, #444);
+}
+
+.control-btn.active {
+    background: linear-gradient(145deg, #ff6b35, #e55a2b);
+}
+
+.waveform-label {
+    font-weight: bold;
+    color: #00ff88;
+}
+
+.waveform-scale {
+    color: #888;
+}
+
+canvas {
+    background: #000;
+    border-radius: 8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border: 1px solid #333;
+    margin-bottom: 20px;
+    display: block;
+    image-rendering: auto;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: smooth;
+    -webkit-image-rendering: auto;
+    -moz-image-rendering: auto;
+    -ms-image-rendering: auto;
+    /* Fallback for older browsers */
+    -ms-interpolation-mode: bicubic;
+}
+
+/* Vital Signs Overlays */
+.vital-overlay {
+    position: absolute;
+    background: rgba(0, 0, 0, 0.8);
+    border: 2px solid #00ff88;
+    border-radius: 8px;
+    padding: 8px 12px;
+    color: #ffffff;
+    font-family: 'Courier New', monospace;
+    text-align: center;
+    min-width: 80px;
+    box-shadow: 0 0 10px rgba(0, 255, 136, 0.3);
+}
+
+.vital-overlay.alarm {
+    border-color: #ff4444;
+    box-shadow: 0 0 15px rgba(255, 68, 68, 0.5);
+    animation: alarmPulse 1s infinite;
+}
+
+@keyframes alarmPulse {
+    0%, 100% { 
+        -webkit-transform: scale(1);
+        -moz-transform: scale(1);
+        -ms-transform: scale(1);
+        transform: scale(1); 
+    }
+    50% { 
+        -webkit-transform: scale(1.05);
+        -moz-transform: scale(1.05);
+        -ms-transform: scale(1.05);
+        transform: scale(1.05); 
+    }
+}
+
+@-webkit-keyframes alarmPulse {
+    0%, 100% { -webkit-transform: scale(1); }
+    50% { -webkit-transform: scale(1.05); }
+}
+
+@-moz-keyframes alarmPulse {
+    0%, 100% { -moz-transform: scale(1); }
+    50% { -moz-transform: scale(1.05); }
+}
+
+@-ms-keyframes alarmPulse {
+    0%, 100% { -ms-transform: scale(1); }
+    50% { -ms-transform: scale(1.05); }
+}
+
+.vital-overlay .vital-label {
+    font-size: 12px;
+    color: #888;
+    margin-bottom: 2px;
+    font-weight: bold;
+}
+
+.vital-overlay .vital-value {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 2px;
+    text-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
+}
+
+.vital-overlay .vital-value.big-numbers {
+    font-size: 32px;
+}
+
+.vital-overlay .vital-unit {
+    font-size: 10px;
+    color: #aaa;
+}
+
+/* Position overlays on ECG */
+#hr-overlay {
+    top: 10px;
+    left: 10px;
+}
+
+.bp-overlay {
+    top: 10px;
+    right: 10px;
+}
+
+.temp-overlay {
+    bottom: 10px;
+    left: 10px;
+}
+
+.st-overlay {
+    bottom: 10px;
+    right: 10px;
+}
+
+.arrhythmia-overlay {
+    top: 50px;
+    left: 10px;
+}
+
+/* Position overlays on Pleth */
+.spo2-overlay {
+    top: 10px;
+    left: 10px;
+}
+
+.rr-overlay {
+    top: 10px;
+    right: 10px;
+}
+
+.control-panel {
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    padding: 20px;
+    border: 1px solid #444;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    -moz-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-justify-content: space-between;
+    -moz-justify-content: space-between;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+.control-section {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    padding: 15px;
+    border: 1px solid #333;
+    margin-bottom: 20px;
+    -webkit-flex: 1;
+    -moz-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    min-width: 300px;
+    margin-right: 20px;
+}
+
+.control-section h3 {
+    color: #00a8ff;
+    margin-bottom: 15px;
+    font-size: 16px;
+    border-bottom: 1px solid #444;
+    padding-bottom: 8px;
+}
+
+.control-group {
+    margin-bottom: 15px;
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: center;
+    -moz-align-items: center;
+    -ms-flex-align: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.control-group label {
+    min-width: 120px;
+    font-size: 14px;
+    color: #ccc;
+}
+
+input[type="range"] {
+    -webkit-flex: 1;
+    -moz-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    height: 6px;
+    background: #333;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    background: #00a8ff;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 10px rgba(0, 168, 255, 0.5);
+    -webkit-box-shadow: 0 0 10px rgba(0, 168, 255, 0.5);
+}
+
+input[type="range"]::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    background: #00a8ff;
+    border-radius: 50%;
+    -moz-border-radius: 50%;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 0 10px rgba(0, 168, 255, 0.5);
+    -moz-box-shadow: 0 0 10px rgba(0, 168, 255, 0.5);
+}
+
+input[type="range"]::-ms-thumb {
+    width: 18px;
+    height: 18px;
+    background: #00a8ff;
+    border-radius: 50%;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 0 10px rgba(0, 168, 255, 0.5);
+}
+
+input[type="range"]::-webkit-slider-track {
+    background: #333;
+    height: 6px;
+    border-radius: 3px;
+    -webkit-border-radius: 3px;
+}
+
+input[type="range"]::-moz-range-track {
+    background: #333;
+    height: 6px;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    border: none;
+}
+
+input[type="range"]::-ms-track {
+    background: #333;
+    height: 6px;
+    border-radius: 3px;
+    border: none;
+    color: transparent;
+}
+
+.control-group span {
+    min-width: 40px;
+    text-align: center;
+    font-weight: bold;
+    color: #00ff88;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 4px 8px;
+    border-radius: 4px;
+}
+
+.alarm-controls, .audio-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.alarm-controls label, .audio-controls label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #ccc;
+    font-size: 14px;
+}
+
+input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: #00a8ff;
+}
+
+button {
+    background: linear-gradient(145deg, #444, #333);
+    border: 1px solid #555;
+    color: #fff;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background: linear-gradient(145deg, #555, #444);
+    transform: translateY(-1px);
+}
+
+button:active {
+    transform: translateY(0);
+}
+
+#test-alarm-btn {
+    background: linear-gradient(145deg, #ff4444, #cc3333);
+}
+
+#test-alarm-btn:hover {
+    background: linear-gradient(145deg, #cc3333, #aa2222);
+}
+
+#silence-alarm-btn {
+    background: linear-gradient(145deg, #ffaa00, #cc8800);
+}
+
+#silence-alarm-btn:hover {
+    background: linear-gradient(145deg, #cc8800, #aa6600);
+}
+
+.alarm-status {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.9);
+    border-radius: 10px;
+    padding: 15px;
+    border: 2px solid #ff4444;
+    box-shadow: 0 0 20px rgba(255, 68, 68, 0.5);
+    display: none;
+    z-index: 1000;
+}
+
+.alarm-status.active {
+    display: block;
+    animation: alarmFlash 0.5s infinite alternate;
+}
+
+@keyframes alarmFlash {
+    0% { border-color: #ff4444; }
+    100% { border-color: #ff8888; }
+}
+
+.alarm-indicator {
+    width: 20px;
+    height: 20px;
+    background: #ff4444;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    animation: alarmBlink 1s infinite;
+}
+
+@keyframes alarmBlink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0.3; }
+}
+
+.alarm-message {
+    color: #ff4444;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+/* Status Bar */
+.status-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 8px 15px;
+    border-top: 1px solid #444;
+    font-size: 12px;
+    color: #ccc;
+}
+
+.status-indicators {
+    display: flex;
+    gap: 20px;
+}
+
+.status-indicator {
+    color: #00ff88;
+    font-weight: bold;
+}
+
+.status-indicator.error {
+    color: #ff4444;
+}
+
+.system-info {
+    display: flex;
+    gap: 20px;
+}
+
+/* Startup Screen */
+.startup-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    transition: opacity 0.5s ease;
+}
+
+.startup-screen.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.startup-content {
+    text-align: center;
+    color: #fff;
+}
+
+.startup-logo {
+    font-size: 48px;
+    font-weight: bold;
+    color: #00a8ff;
+    margin-bottom: 20px;
+    text-shadow: 0 0 20px rgba(0, 168, 255, 0.5);
+}
+
+.startup-text {
+    font-size: 24px;
+    color: #ccc;
+    margin-bottom: 40px;
+}
+
+.startup-progress {
+    width: 300px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 15px;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #00a8ff, #00ff88);
+    width: 0%;
+    transition: width 0.3s ease;
+}
+
+.startup-status {
+    font-size: 14px;
+    color: #888;
+}
+
+/* Enhanced Control Sections */
+.alarm-priority {
+    margin: 10px 0;
+}
+
+.alarm-priority label {
+    margin-right: 10px;
+}
+
+.alarm-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.artifact-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.artifact-controls label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #ccc;
+    font-size: 14px;
+}
+
+/* Responsive Design - Cross-browser compatible */
+@media screen and (max-width: 1200px) {
+    .monitor-container {
+        padding: 10px;
+    }
+    
+    .monitor-frame {
+        height: 95vh;
+        padding: 20px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .monitor-container {
+        padding: 5px;
+    }
+    
+    .monitor-frame {
+        padding: 15px;
+        height: 98vh;
+        height: 98dvh; /* Dynamic viewport height */
+    }
+    
+    .monitor-header {
+        -webkit-flex-direction: column;
+        -moz-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-align-items: flex-start;
+        -moz-align-items: flex-start;
+        -ms-align-items: flex-start;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .control-panel {
+        -webkit-flex-direction: column;
+        -moz-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+    }
+    
+    .control-section {
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+    
+    .waveform-header {
+        -webkit-flex-direction: column;
+        -moz-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-align-items: flex-start;
+        -moz-align-items: flex-start;
+        -ms-align-items: flex-start;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .vital-overlay {
+        min-width: 60px;
+        padding: 6px 8px;
+    }
+    
+    .vital-overlay .vital-value {
+        font-size: 18px;
+    }
+    
+    .vital-overlay .vital-value.big-numbers {
+        font-size: 24px;
+    }
+    
+    canvas {
+        margin-bottom: 10px;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .monitor-frame {
+        padding: 10px;
+        border-radius: 10px;
+        -webkit-border-radius: 10px;
+        -moz-border-radius: 10px;
+    }
+    
+    .brand-logo {
+        font-size: 20px;
+    }
+    
+    .monitor-title {
+        font-size: 16px;
+    }
+    
+    .control-section h3 {
+        font-size: 14px;
+    }
+    
+    .control-group {
+        -webkit-flex-direction: column;
+        -moz-flex-direction: column;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        -webkit-align-items: flex-start;
+        -moz-align-items: flex-start;
+        -ms-align-items: flex-start;
+        align-items: flex-start;
+        gap: 5px;
+    }
+    
+    .control-group label {
+        min-width: auto;
+        font-size: 12px;
+    }
+    
+    .vital-overlay {
+        min-width: 50px;
+        padding: 4px 6px;
+    }
+    
+    .vital-overlay .vital-value {
+        font-size: 16px;
+    }
+    
+    .vital-overlay .vital-value.big-numbers {
+        font-size: 20px;
+    }
+}
+
+/* High DPI displays */
+@media screen and (-webkit-min-device-pixel-ratio: 2),
+       screen and (min-resolution: 192dpi) {
+    .vital-overlay {
+        border-width: 1px;
+    }
+    
+    canvas {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: optimize-contrast;
+    }
+}
+
+/* Print styles */
+@media print {
+    .monitor-frame {
+        background: white !important;
+        color: black !important;
+        box-shadow: none !important;
+        -webkit-box-shadow: none !important;
+        -moz-box-shadow: none !important;
+    }
+    
+    .control-panel {
+        display: none !important;
+    }
+    
+    canvas {
+        border: 1px solid black !important;
+    }
+}
+
+/* Advanced ECG Analysis Controls */
+.ecg-analysis-controls {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: column;
+    -moz-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+.nibp-controls {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: column;
+    -moz-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+.alarm-controls, .audio-controls {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: column;
+    -moz-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+.alarm-buttons {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-wrap: wrap;
+    -moz-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.artifact-controls {
+    display: -webkit-flex;
+    display: -moz-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-flex-direction: column;
+    -moz-flex-direction: column;
+    -ms-flex-direction: column;
+    flex-direction: column;
+}
+
+.nibp-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.nibp-status {
+    padding: 8px;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 4px;
+    text-align: center;
+    font-weight: bold;
+    color: #00ff88;
+    margin-top: 10px;
+}
+
+.nibp-status.measuring {
+    color: #ffaa00;
+    animation: pulse 1s infinite;
+}
+
+.nibp-status.error {
+    color: #ff4444;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* ST Segment Colors */
+.st-overlay .vital-value {
+    color: #00ff88; /* Normal - green */
+}
+
+.st-overlay.alarm .vital-value {
+    color: #ff4444; /* Abnormal - red */
+}
+
+/* Arrhythmia Display */
+.arrhythmia-overlay .vital-value {
+    font-size: 18px;
+    color: #00ff88;
+}
+
+.arrhythmia-overlay.alarm .vital-value {
+    color: #ff4444;
+    animation: alarmPulse 1s infinite;
+}
